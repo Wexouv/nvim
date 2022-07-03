@@ -64,3 +64,6 @@ Map("<C-c>", Cmd ":%y+") -- copy whole file content
 -- Movement between tabs
 Map("<leader>n", Cmd "tabprevious")
 Map("<leader>o", Cmd "tabnext")
+
+-- Packer
+Map("<leader>ps", Cmd "PackerSync")

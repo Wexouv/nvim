@@ -12,7 +12,8 @@ require 'packer'.startup({ function(use)
     -- File tree
     use {
         'kyazdani42/nvim-tree.lua',
-        tag = 'nightly'
+        tag = 'nightly',
+        config = kfg 'tree'
     }
 
 end,

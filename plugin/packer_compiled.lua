@@ -74,6 +74,12 @@ _G.packer_plugins = {
     path = "/home/iz/.local/share/nvim/site/pack/packer/start/impatient.nvim",
     url = "https://github.com/lewis6991/impatient.nvim"
   },
+  ["nvim-tree.lua"] = {
+    config = { 'require("cfg/tree")' },
+    loaded = true,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/iz/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -92,6 +98,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+require("cfg/tree")
+time([[Config for nvim-tree.lua]], false)
 if should_profile then save_profiles() end
 
 end)

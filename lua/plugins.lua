@@ -9,7 +9,13 @@ require 'packer'.startup({ function(use)
         'kyazdani42/nvim-web-devicons'
     }
 
+    -- File tree
+    use {
+        'kyazdani42/nvim-tree.lua',
+        tag = 'nightly'
+    }
+
 end,
-    config = {
-        git = { clone_timeout = nil }
-    } })
+config = {
+    git = { clone_timeout = nil }
+} })

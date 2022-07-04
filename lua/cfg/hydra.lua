@@ -4,6 +4,9 @@ Hydra({
 	name = "Change / Resize Window",
 	mode = 'n',
 	body = "<C-w>",
+    config = {
+        hint = false -- Don't show hints
+	},
 	heads = {
 		-- equalize window sizes
 		{ "e", "<C-w>=" },
@@ -41,4 +44,18 @@ Hydra({
       { '<up>', 'zH' },
       { '<down>', 'zL', { desc = 'half screen ←/→' } },
    }
+})
+
+-- Telescope 
+Hydra({
+    name = 'Telescope',
+    mode = 'n',
+    body = '<leader>f',
+    config = {
+        hint = false
+    },
+    heads = {
+        { 'f', ':Telescope git_files<CR>', desc = "git managed files" },
+        { 'g', ':Telescope live_grep<CR>', desc = "seach inside files" },
+    }
 })

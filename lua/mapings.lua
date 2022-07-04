@@ -9,13 +9,6 @@ Map ("<leader>y", '"+y')
 Map ("<leader>q",  Cmd "q")
 Map ("<C-S>",      Cmd "wall")
 
--- Telescope
-Map ('<C-F>',      Cmd 'Telescope')
-Map ('<leader>ff', Cmd 'Telescope find_files')
-Map ("<leader>fc", Cmd "Telescope colorscheme")
-Map ("<leader>fh", Cmd "Telescope help_tags")
-Map ("<leader>fg", Cmd "Telescope live_grep")
-
 Map ("<C-A>",      Cmd "NvimTreeToggle")
 
 -- Lsp

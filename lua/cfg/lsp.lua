@@ -37,4 +37,5 @@ local lspinstaller = require("nvim-lsp-installer")
 
 lspinstaller.setup {}
 lspconfig.omnisharp.setup { on_attach = on_attach }
+lspconfig.tsserver.setup { on_attach = on_attach }
 lspinstaller.setup {}

@@ -53,10 +53,18 @@ require 'packer'.startup({ function(use)
     }
 
     -- Debugger
-    use {{ 
-        'mfussenegger/nvim-dap', config = kfg 'dap'  },{
-            "rcarriga/nvim-dap-ui", config = kfg 'dapui'
-        }}
+    use 
+    {
+        { 
+            'mfussenegger/nvim-dap', 
+            config = kfg 'dap'
+        },
+        {
+            "rcarriga/nvim-dap-ui",
+            config = kfg 'dapui',
+            after = 'nvim-dap'
+        }
+    }
 
 
         use { "ellisonleao/gruvbox.nvim", after = "nvim-treesitter", 
@@ -70,11 +78,22 @@ require 'packer'.startup({ function(use)
         end
     }
 
-    -- Hydra
     use {
-        'anuvyklack/hydra.nvim',
-        config = kfg 'hydra',
-        requires = 'anuvyklack/keymap-layer.nvim'
+        'ggandor/lightspeed.nvim',
+        keys = { 's', 'S', 'f', 'F' },
+        config = kfg 'speed'
+    }
+
+    -- Hydra
+    use 
+    {
+        {
+            'anuvyklack/keymap-layer.nvim',
+        },
+        {
+            'anuvyklack/hydra.nvim',
+            config = kfg 'hydra'
+        }
     }
 
     -- Telescope
@@ -92,6 +111,11 @@ require 'packer'.startup({ function(use)
         cmd = "NvimTreeToggle"
     }
 
+    -- Rest
+    use {
+        "NTBBloodbath/rest.nvim",
+        config = kfg 'rest'
+    }
 end,
 config = {
     git = { clone_timeout = nil }

@@ -8,7 +8,7 @@ opt.swapfile = false
 opt.wrap = false
 opt.cmdheight = 0
 opt.pumblend = 20
-opt.laststatus = 3
+opt.laststatus = 0
 opt.termguicolors = true
 
 opt.updatetime = 250

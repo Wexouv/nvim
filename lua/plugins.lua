@@ -8,15 +8,29 @@ require 'packer'.startup({ function(use)
         'nvim-lua/plenary.nvim',
         'kyazdani42/nvim-web-devicons'
     }
+
     -- Lsp
     use {
+        -- Lsp configuration
         {
             'neovim/nvim-lspconfig',
             config = kfg 'lsp',
             event = "InsertEnter"
         },
+        -- LspInstaller
         {
             "williamboman/nvim-lsp-installer",
+        }, 
+        -- LspSaga
+        {
+            'kkharji/lspsaga.nvim',
+            cmd = "Lspsaga"
+        },
+        -- Signature help
+        {
+            'ray-x/lsp_signature.nvim',
+            config = kfg 'signature',
+            after = "nvim-treesitter"
         }
     }
 

@@ -155,8 +155,26 @@ _G.packer_plugins = {
     path = "/home/iz/.local/share/nvim/site/pack/packer/start/keymap-layer.nvim",
     url = "https://github.com/anuvyklack/keymap-layer.nvim"
   },
+  ["lsp_signature.nvim"] = {
+    config = { 'require("cfg/signature")' },
+    load_after = {
+      ["nvim-treesitter"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/opt/lsp_signature.nvim",
+    url = "https://github.com/ray-x/lsp_signature.nvim"
+  },
+  ["lspsaga.nvim"] = {
+    commands = { "Lspsaga" },
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim",
+    url = "https://github.com/kkharji/lspsaga.nvim"
+  },
   ["nvim-cmp"] = {
-    after = { "cmp-nvim-lsp", "LuaSnip", "cmp-path", "cmp_luasnip", "cmp-buffer", "cmp-cmdline" },
+    after = { "cmp_luasnip", "cmp-buffer", "LuaSnip", "cmp-path", "cmp-cmdline", "cmp-nvim-lsp" },
     config = { 'require("cfg/cmp")' },
     load_after = {
       ["nvim-lspconfig"] = true
@@ -202,7 +220,7 @@ _G.packer_plugins = {
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    after = { "gruvbox.nvim" },
+    after = { "gruvbox.nvim", "lsp_signature.nvim" },
     config = { 'require("cfg/treesitter")' },
     load_after = {
       cmp_luasnip = true
@@ -243,18 +261,19 @@ time([[Defining packer_plugins]], false)
 time([[Config for hydra.nvim]], true)
 require("cfg/hydra")
 time([[Config for hydra.nvim]], false)
--- Config for: nvim-dap-ui
-time([[Config for nvim-dap-ui]], true)
-require("cfg/dapui")
-time([[Config for nvim-dap-ui]], false)
 -- Config for: nvim-dap
 time([[Config for nvim-dap]], true)
 require("cfg/dap")
 time([[Config for nvim-dap]], false)
+-- Config for: nvim-dap-ui
+time([[Config for nvim-dap-ui]], true)
+require("cfg/dapui")
+time([[Config for nvim-dap-ui]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Lspsaga lua require("packer.load")({'lspsaga.nvim'}, { cmd = "Lspsaga", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 

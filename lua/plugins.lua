@@ -8,12 +8,26 @@ require 'packer'.startup({ function(use)
         'nvim-lua/plenary.nvim',
         'kyazdani42/nvim-web-devicons'
     }
+    -- Hydra
+    use {
+        'anuvyklack/hydra.nvim',
+        config = kfg 'hydra',
+        requires = 'anuvyklack/keymap-layer.nvim'
+    }
+
+    -- Telescope
+    use {
+        'nvim-telescope/telescope.nvim',
+        kfg = 'telescope',
+        cmd = "Telescope"
+    }
 
     -- File tree
     use {
         'kyazdani42/nvim-tree.lua',
         tag = 'nightly',
-        config = kfg 'tree'
+        config = kfg 'tree',
+        cmd = "NvimTreeToggle"
     }
 
 end,

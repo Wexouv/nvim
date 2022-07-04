@@ -6,7 +6,6 @@ Cmd = function(x) return string.format("<CMD>%s<CR>", x) end
 
 -----------------------------------------------
 Map ("<leader>y", '"+y')
--- Mappings
 Map ("<leader>q",  Cmd "q")
 Map ("<C-S>",      Cmd "wall")
 
@@ -31,14 +30,6 @@ Map ("<leader>pd", Cmd "Lspsaga preview_definition")
 Map ("<C-K>",      Cmd "Lspsaga hover_doc")
 Map ("<C-T>",      Cmd "Lspsaga open_floaterm")
 Map ("<C-T>",      Cmd "Lspsaga close_floaterm", "t")
-
--- Harpoon
-Map ('<leader>hh', Cmd 'lua require("harpoon.mark").add_file()')
-Map ('<leader>ha', Cmd 'lua require("harpoon.ui").nav_file(1)')
-Map ('<leader>hr', Cmd 'lua require("harpoon.ui").nav_file(2)')
-Map ('<leader>hs', Cmd 'lua require("harpoon.ui").nav_file(3)')
-Map ('<leader>ht', Cmd 'lua require("harpoon.ui").nav_file(4)')
-Map ('<leader>hp', Cmd 'lua require("harpoon.ui").toggle_quick_menu()')
 
 -- Dap
 Map ('<F5>',       Cmd 'lua require "dap".continue()')

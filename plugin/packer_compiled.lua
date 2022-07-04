@@ -156,7 +156,7 @@ _G.packer_plugins = {
     url = "https://github.com/anuvyklack/keymap-layer.nvim"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-buffer", "cmp-cmdline", "LuaSnip", "cmp-path", "cmp-nvim-lsp", "cmp_luasnip" },
+    after = { "cmp-nvim-lsp", "LuaSnip", "cmp-path", "cmp_luasnip", "cmp-buffer", "cmp-cmdline" },
     config = { 'require("cfg/cmp")' },
     load_after = {
       ["nvim-lspconfig"] = true
@@ -173,10 +173,15 @@ _G.packer_plugins = {
     url = "https://github.com/mfussenegger/nvim-dap"
   },
   ["nvim-dap-ui"] = {
-    config = { "\27LJ\2\n·\4\0\0\a\0\31\0)6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\0026\3\n\0009\3\v\0039\3\f\3'\5\r\0B\3\2\2=\3\14\0024\3\3\0005\4\17\0005\5\16\0005\6\15\0>\6\1\5=\5\18\4>\4\1\0035\4\20\0005\5\19\0=\5\18\4>\4\2\3=\3\21\0025\3\22\0005\4\24\0005\5\23\0=\5\25\4=\4\t\3=\3\26\0025\3\27\0=\3\28\0025\3\29\0=\3\30\2B\0\2\1K\0\1\0\vrender\1\0\0\fwindows\1\0\1\vindent\3\1\rfloating\nclose\1\0\0\1\3\0\0\6q\n<Esc>\1\0\1\vborder\vsingle\flayouts\1\0\2\rposition\vbottom\tsize\4\0€€Àþ\3\1\3\0\0\trepl\fconsole\relements\1\0\2\rposition\tleft\tsize\3(\1\5\0\0\0\16breakpoints\vstacks\fwatches\1\0\2\aid\vscopes\tsize\4\0€€Àþ\3\17expand_lines\rnvim-0.7\bhas\afn\bvim\rmappings\vexpand\1\0\5\trepl\6r\vremove\6d\topen\6o\vtoggle\6t\tedit\6e\1\3\0\0\t<CR>\18<2-LeftMouse>\nicons\1\0\0\1\0\2\rexpanded\bâ–¾\14collapsed\bâ–¸\nsetup\ndapui\frequire\0" },
+    config = { 'require("cfg/dapui")' },
     loaded = true,
     path = "/home/iz/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
     url = "https://github.com/rcarriga/nvim-dap-ui"
+  },
+  ["nvim-lsp-installer"] = {
+    loaded = true,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     after = { "nvim-cmp" },
@@ -240,7 +245,7 @@ require("cfg/hydra")
 time([[Config for hydra.nvim]], false)
 -- Config for: nvim-dap-ui
 time([[Config for nvim-dap-ui]], true)
-try_loadstring("\27LJ\2\n·\4\0\0\a\0\31\0)6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\0026\3\n\0009\3\v\0039\3\f\3'\5\r\0B\3\2\2=\3\14\0024\3\3\0005\4\17\0005\5\16\0005\6\15\0>\6\1\5=\5\18\4>\4\1\0035\4\20\0005\5\19\0=\5\18\4>\4\2\3=\3\21\0025\3\22\0005\4\24\0005\5\23\0=\5\25\4=\4\t\3=\3\26\0025\3\27\0=\3\28\0025\3\29\0=\3\30\2B\0\2\1K\0\1\0\vrender\1\0\0\fwindows\1\0\1\vindent\3\1\rfloating\nclose\1\0\0\1\3\0\0\6q\n<Esc>\1\0\1\vborder\vsingle\flayouts\1\0\2\rposition\vbottom\tsize\4\0€€Àþ\3\1\3\0\0\trepl\fconsole\relements\1\0\2\rposition\tleft\tsize\3(\1\5\0\0\0\16breakpoints\vstacks\fwatches\1\0\2\aid\vscopes\tsize\4\0€€Àþ\3\17expand_lines\rnvim-0.7\bhas\afn\bvim\rmappings\vexpand\1\0\5\trepl\6r\vremove\6d\topen\6o\vtoggle\6t\tedit\6e\1\3\0\0\t<CR>\18<2-LeftMouse>\nicons\1\0\0\1\0\2\rexpanded\bâ–¾\14collapsed\bâ–¸\nsetup\ndapui\frequire\0", "config", "nvim-dap-ui")
+require("cfg/dapui")
 time([[Config for nvim-dap-ui]], false)
 -- Config for: nvim-dap
 time([[Config for nvim-dap]], true)

@@ -47,13 +47,3 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     })
 })
-
--- Setup lspconfig.
-local pid = vim.fn.getpid()
-local omnisharp_bin = "/usr/bin/omnisharp"
-
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-require('lspconfig')['omnisharp'].setup {
-    capabilities = capabilities,
-    cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
-}

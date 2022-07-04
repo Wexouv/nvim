@@ -12,7 +12,7 @@ dap.configurations.cs = {
     name = "launch - netcoredbg",
     request = "launch",
     program = function()
-        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+        return "/home/iz/Projects/Alif/Alif-Audit/Audit/src/Audit.API/bin/Debug/net6.0/Audit.API.dll"
     end,
   },
 }

@@ -129,6 +129,16 @@ _G.packer_plugins = {
     path = "/home/iz/.local/share/nvim/site/pack/packer/opt/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["gruvbox.nvim"] = {
+    config = { "\27LJ\2\n‘\1\0\0\3\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\0016\0\4\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0\24colorscheme gruvbox\bcmd\bvim\1\0\3\finverse\2\21invert_selection\1\rcontrast\thard\nsetup\fgruvbox\frequire\0" },
+    load_after = {
+      ["nvim-treesitter"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/opt/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
   ["hydra.nvim"] = {
     config = { 'require("cfg/hydra")' },
     loaded = true,
@@ -146,7 +156,7 @@ _G.packer_plugins = {
     url = "https://github.com/anuvyklack/keymap-layer.nvim"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-cmdline", "cmp-buffer", "LuaSnip", "cmp-path", "cmp-nvim-lsp", "cmp_luasnip" },
+    after = { "cmp-nvim-lsp", "cmp-buffer", "cmp-cmdline", "LuaSnip", "cmp-path", "cmp_luasnip" },
     config = { 'require("cfg/cmp")' },
     load_after = {
       ["nvim-lspconfig"] = true
@@ -175,6 +185,7 @@ _G.packer_plugins = {
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
+    after = { "gruvbox.nvim" },
     config = { 'require("cfg/treesitter")' },
     load_after = {
       cmp_luasnip = true

@@ -15,6 +15,7 @@ require 'packer'.startup({ function(use)
         event = "InsertEnter"
     }
 
+    -- Auto completion and code analiz
     use {
         { 'hrsh7th/nvim-cmp', config = kfg 'cmp', after = "nvim-lspconfig" },
         { 'hrsh7th/cmp-nvim-lsp', after = "nvim-cmp" },
@@ -31,6 +32,17 @@ require 'packer'.startup({ function(use)
         config = kfg 'treesitter',
         after = "cmp_luasnip"
     }
+        
+    use { "ellisonleao/gruvbox.nvim", after = "nvim-treesitter", 
+    config = function()
+        require("gruvbox").setup({
+          inverse = true,
+          invert_selection = false,
+          contrast = "hard",
+        })
+    vim.cmd("colorscheme gruvbox")
+    end
+}
 
     -- Hydra
     use {

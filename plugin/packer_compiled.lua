@@ -70,34 +70,63 @@ time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   LuaSnip = {
-    loaded = true,
-    path = "/home/iz/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = true,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/opt/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["cmp-buffer"] = {
-    loaded = true,
-    path = "/home/iz/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    after_files = { "/home/iz/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/opt/cmp-buffer",
     url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-cmdline"] = {
-    loaded = true,
-    path = "/home/iz/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    after_files = { "/home/iz/.local/share/nvim/site/pack/packer/opt/cmp-cmdline/after/plugin/cmp_cmdline.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/opt/cmp-cmdline",
     url = "https://github.com/hrsh7th/cmp-cmdline"
   },
   ["cmp-nvim-lsp"] = {
-    config = { 'require("cfg/cmp")' },
-    loaded = true,
-    path = "/home/iz/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    after_files = { "/home/iz/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-path"] = {
-    loaded = true,
-    path = "/home/iz/.local/share/nvim/site/pack/packer/start/cmp-path",
+    after_files = { "/home/iz/.local/share/nvim/site/pack/packer/opt/cmp-path/after/plugin/cmp_path.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/opt/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
   cmp_luasnip = {
-    loaded = true,
-    path = "/home/iz/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    after = { "nvim-treesitter" },
+    after_files = { "/home/iz/.local/share/nvim/site/pack/packer/opt/cmp_luasnip/after/plugin/cmp_luasnip.lua" },
+    load_after = {
+      ["nvim-cmp"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/opt/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["hydra.nvim"] = {
@@ -117,14 +146,23 @@ _G.packer_plugins = {
     url = "https://github.com/anuvyklack/keymap-layer.nvim"
   },
   ["nvim-cmp"] = {
-    loaded = true,
-    path = "/home/iz/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    after = { "cmp-cmdline", "cmp-buffer", "LuaSnip", "cmp-path", "cmp-nvim-lsp", "cmp_luasnip" },
+    config = { 'require("cfg/cmp")' },
+    load_after = {
+      ["nvim-lspconfig"] = true
+    },
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/opt/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
+    after = { "nvim-cmp" },
     config = { 'require("cfg/lsp")' },
-    loaded = true,
-    path = "/home/iz/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/iz/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
@@ -138,9 +176,11 @@ _G.packer_plugins = {
   },
   ["nvim-treesitter"] = {
     config = { 'require("cfg/treesitter")' },
+    load_after = {
+      cmp_luasnip = true
+    },
     loaded = false,
     needs_bufread = false,
-    only_cond = false,
     path = "/home/iz/.local/share/nvim/site/pack/packer/opt/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
@@ -175,14 +215,6 @@ time([[Defining packer_plugins]], false)
 time([[Config for hydra.nvim]], true)
 require("cfg/hydra")
 time([[Config for hydra.nvim]], false)
--- Config for: cmp-nvim-lsp
-time([[Config for cmp-nvim-lsp]], true)
-require("cfg/cmp")
-time([[Config for cmp-nvim-lsp]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require("cfg/lsp")
-time([[Config for nvim-lspconfig]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
@@ -194,7 +226,7 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-treesitter'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-lspconfig'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

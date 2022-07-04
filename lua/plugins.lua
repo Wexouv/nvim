@@ -11,24 +11,25 @@ require 'packer'.startup({ function(use)
     -- Lsp
     use {
         'neovim/nvim-lspconfig',
-        config = kfg 'lsp'
+        config = kfg 'lsp',
+        event = "InsertEnter"
     }
 
     use {
-        { 'hrsh7th/cmp-nvim-lsp', config = kfg 'cmp' },
-        { 'hrsh7th/cmp-buffer' },
-        { 'hrsh7th/cmp-path' },
-        { 'hrsh7th/cmp-cmdline' },
-        { 'hrsh7th/nvim-cmp' },
-        { 'L3MON4D3/LuaSnip'},
-        { 'saadparwaiz1/cmp_luasnip'},
+        { 'hrsh7th/nvim-cmp', config = kfg 'cmp', after = "nvim-lspconfig" },
+        { 'hrsh7th/cmp-nvim-lsp', after = "nvim-cmp" },
+        { 'hrsh7th/cmp-buffer', after = "nvim-cmp" },
+        { 'hrsh7th/cmp-path', after = "nvim-cmp" },
+        { 'hrsh7th/cmp-cmdline', after = "nvim-cmp" },
+        { 'L3MON4D3/LuaSnip', after = "nvim-cmp"},
+        { 'saadparwaiz1/cmp_luasnip', after = "nvim-cmp" },
     }
 
     -- Tree-sitter
     use {
         'nvim-treesitter/nvim-treesitter',
         config = kfg 'treesitter',
-        event = "InsertEnter"
+        after = "cmp_luasnip"
     }
 
     -- Hydra

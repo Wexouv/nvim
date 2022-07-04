@@ -1,3 +1,5 @@
+Cmd = function(x) return string.format("<CMD>%s<CR>", x) end
+
 local Hydra = require("hydra")
 
 Hydra({
@@ -58,5 +60,24 @@ Hydra({
         { 'f', ':Telescope git_files<CR>', desc = "git managed files" },
         { 'g', ':Telescope live_grep<CR>', desc = "seach inside files" },
         { 'h', ':Telescope help_tags<CR>', desc = "seach help" },
+    }
+})
+
+Hydra({
+    name = 'Debugger',
+    mode = 'n',
+    hint = "Debugger",
+    body = '<leader>gg',
+    config = {
+        color = 'pink',
+    },
+
+    heads = {
+        { 's', Cmd 'lua require "dap".continue()' },
+        { 'n', Cmd 'lua require "dap".step_over()' },
+        { 'i', Cmd 'lua require "dap".step_into()' },
+        { 'o', Cmd 'lua require "dap".step_out()' },
+        { 'b', Cmd 'lua require "dap".toggle_breakpoint()' },
+        { 'x', Cmd 'lua require "dap".disconnect()' },
     }
 })

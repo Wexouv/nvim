@@ -8,12 +8,26 @@ require 'packer'.startup({ function(use)
         'nvim-lua/plenary.nvim',
         'kyazdani42/nvim-web-devicons'
     }
+    -- Lsp
+    use {
+        'neovim/nvim-lspconfig',
+        config = kfg 'lsp'
+    }
+
+    use {
+        { 'hrsh7th/cmp-nvim-lsp', config = kfg 'cmp' },
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'hrsh7th/cmp-cmdline' },
+        { 'hrsh7th/nvim-cmp' },
+        { 'L3MON4D3/LuaSnip'},
+        { 'saadparwaiz1/cmp_luasnip'},
+    }
 
     -- Tree-sitter
-    use 
-    {
+    use {
         'nvim-treesitter/nvim-treesitter',
-        kfg = 'tree-sitter',
+        config = kfg 'treesitter',
         event = "InsertEnter"
     }
 
@@ -27,7 +41,7 @@ require 'packer'.startup({ function(use)
     -- Telescope
     use {
         'nvim-telescope/telescope.nvim',
-        kfg = 'telescope',
+        config = kfg 'telescope',
         cmd = "Telescope"
     }
 

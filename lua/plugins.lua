@@ -8,6 +8,15 @@ require 'packer'.startup({ function(use)
         'nvim-lua/plenary.nvim',
         'kyazdani42/nvim-web-devicons'
     }
+
+    -- Tree-sitter
+    use 
+    {
+        'nvim-treesitter/nvim-treesitter',
+        kfg = 'tree-sitter',
+        event = "InsertEnter"
+    }
+
     -- Hydra
     use {
         'anuvyklack/hydra.nvim',

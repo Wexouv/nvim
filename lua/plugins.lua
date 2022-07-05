@@ -3,36 +3,25 @@ local kfg = function(name) return string.format('require("cfg/%s")', name) end
 require 'packer'.startup({ function(use)
     -- Global dependencies
     use {
-        'lewis6991/impatient.nvim',
-        'wbthomason/packer.nvim',
-        'nvim-lua/plenary.nvim',
-        'kyazdani42/nvim-web-devicons'
+        'lewis6991/impatient.nvim', 'wbthomason/packer.nvim',
+        'nvim-lua/plenary.nvim',    'kyazdani42/nvim-web-devicons'
     }
 
     -- Lsp
-    use {
-        -- Lsp configuration
-        {
-            'neovim/nvim-lspconfig',
-            config = kfg 'lsp',
-            event = "InsertEnter"
-        },
-        -- LspInstaller
-        {
-            "williamboman/nvim-lsp-installer",
-        }, 
-        -- LspSaga
-        {
-            'kkharji/lspsaga.nvim',
-            cmd = "Lspsaga"
-        },
-        -- Signature help
-        {
-            'ray-x/lsp_signature.nvim',
-            config = kfg 'signature',
-            after = "nvim-lspconfig"
-        }
-    }
+    use {{
+        'neovim/nvim-lspconfig',
+        config = kfg 'lsp',
+        event = "InsertEnter"
+    },{
+        "williamboman/nvim-lsp-installer",
+    },{
+        'kkharji/lspsaga.nvim',
+        cmd = "Lspsaga"
+    },{
+        'ray-x/lsp_signature.nvim',
+        config = kfg 'signature',
+        after = "nvim-lspconfig"
+    }}
 
     -- Auto completion and code analiz
     use {
@@ -58,21 +47,18 @@ require 'packer'.startup({ function(use)
 
     -- Debugger
     use 
-    {
-        { 
-            'mfussenegger/nvim-dap', 
-            config = kfg 'dap',
-            keys = "<leader>gg"
-        },
-        {
-            "rcarriga/nvim-dap-ui",
-            config = kfg 'dapui',
-            after = 'nvim-dap'
-        }
-    }
+    {{ 
+        'mfussenegger/nvim-dap', 
+        config = kfg 'dap',
+        keys = "<leader>gg"
+    },{
+        "rcarriga/nvim-dap-ui",
+        config = kfg 'dapui',
+        after = 'nvim-dap'
+    }}
 
-
-        use { "ellisonleao/gruvbox.nvim", after = "nvim-treesitter", 
+    use { 
+        "ellisonleao/gruvbox.nvim", after = "nvim-treesitter", 
         config = function()
             require("gruvbox").setup({
                 inverse = true,
@@ -90,16 +76,12 @@ require 'packer'.startup({ function(use)
     }
 
     -- Hydra
-    use 
-    {
-        {
-            'anuvyklack/keymap-layer.nvim',
-        },
-        {
-            'anuvyklack/hydra.nvim',
-            config = kfg 'hydra'
-        }
-    }
+    use {{
+        'anuvyklack/keymap-layer.nvim',
+    },{
+        'anuvyklack/hydra.nvim',
+        config = kfg 'hydra'
+    }}
 
     -- Telescope
     use {
@@ -123,5 +105,6 @@ require 'packer'.startup({ function(use)
     }
 end,
 config = {
-    git = { clone_timeout = nil }
-} })
+        git = { clone_timeout = nil }
+    }
+})

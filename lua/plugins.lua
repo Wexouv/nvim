@@ -11,38 +11,35 @@ require 'packer'.startup({ function(use)
     use {{
         'neovim/nvim-lspconfig',
         config = kfg 'lsp',
-        event = "InsertEnter"
     },{
         "williamboman/nvim-lsp-installer",
     },{
         'kkharji/lspsaga.nvim',
-        cmd = "Lspsaga"
     },{
         'ray-x/lsp_signature.nvim',
         config = kfg 'signature',
-        after = "nvim-lspconfig"
     }}
 
     -- Auto completion and code analiz
     use {
         -- Candy
-        { 'onsails/lspkind.nvim',  after = 'nvim-lspconfig' },
+        { 'onsails/lspkind.nvim' },
 
         -- Completion and sources
-        { 'hrsh7th/nvim-cmp', config = kfg 'cmp', after = "lspkind.nvim" },
-        { 'hrsh7th/cmp-nvim-lsp', after = "nvim-cmp" },
-        { 'hrsh7th/cmp-buffer', after = "nvim-cmp" },
-        { 'hrsh7th/cmp-path', after = "nvim-cmp" },
-        { 'hrsh7th/cmp-cmdline', after = "nvim-cmp" },
-        { 'L3MON4D3/LuaSnip', after = "nvim-cmp"},
-        { 'saadparwaiz1/cmp_luasnip', after = "nvim-cmp" },
+        { 'hrsh7th/nvim-cmp', config = kfg 'cmp' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'hrsh7th/cmp-cmdline' },
+        { 'L3MON4D3/LuaSnip' },
+        { 'saadparwaiz1/cmp_luasnip' },
+        { 'hrsh7th/cmp-nvim-lua' }
     }
 
     -- Tree-sitter
     use {
         'nvim-treesitter/nvim-treesitter',
         config = kfg 'treesitter',
-        after = "cmp_luasnip"
     }
 
     -- Debugger
@@ -50,15 +47,13 @@ require 'packer'.startup({ function(use)
     {{ 
         'mfussenegger/nvim-dap', 
         config = kfg 'dap',
-        keys = "<leader>gg"
     },{
         "rcarriga/nvim-dap-ui",
         config = kfg 'dapui',
-        after = 'nvim-dap'
     }}
 
     use { 
-        "ellisonleao/gruvbox.nvim", after = "nvim-treesitter", 
+        "ellisonleao/gruvbox.nvim",
         config = function()
             require("gruvbox").setup({
                 inverse = true,
@@ -87,7 +82,6 @@ require 'packer'.startup({ function(use)
     use {
         'nvim-telescope/telescope.nvim',
         config = kfg 'telescope',
-        cmd = "Telescope"
     }
 
     -- File tree
@@ -95,7 +89,6 @@ require 'packer'.startup({ function(use)
         'kyazdani42/nvim-tree.lua',
         tag = 'nightly',
         config = kfg 'tree',
-        cmd = "NvimTreeToggle"
     }
 
     -- Rest
@@ -106,7 +99,6 @@ require 'packer'.startup({ function(use)
 
     use {
         "lukas-reineke/indent-blankline.nvim",
-        after = "gruvbox",
         config = function()
             require("indent_blankline").setup {
                 show_current_context = true,
@@ -119,6 +111,29 @@ require 'packer'.startup({ function(use)
     -- Sql
     use {
         'nanotee/sqls.nvim',
+    }
+
+    -- Coplilot
+    use {
+        "zbirenbaum/copilot-cmp",
+        module = "copilot_cmp",
+    }
+    use {
+        "zbirenbaum/copilot.lua",
+        event = {"VimEnter"},
+        config = function()
+            vim.defer_fn(function()
+                require("copilot").setup( {
+                cmp = {
+                    enabled = true,
+                    method = "getPanelCompletions",
+                },
+                panel = { -- no config options yet
+                    enabled = true,
+                },
+            })
+            end, 100)
+    end,
     }
 end,
 config = {

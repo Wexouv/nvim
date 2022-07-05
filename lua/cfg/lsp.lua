@@ -2,10 +2,10 @@ local lspconfig = require("lspconfig")
 local lspinstaller = require("nvim-lsp-installer")
 local sqls = require('sqls')
 
-
-lspconfig.omnisharp.setup {}
-lspconfig.tsserver.setup {}
 lspinstaller.setup {}
+
+lspconfig.omnisharp.setup { on_attach = on_attach }
+lspconfig.tsserver.setup {}
 
 lspconfig.sqls.setup {
     on_attach = function(client, bufnr)

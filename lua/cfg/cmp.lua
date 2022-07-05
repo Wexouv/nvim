@@ -1,5 +1,6 @@
 local lspkind = require('lspkind')
 local cmp = require'cmp'
+local luasnip = require("luasnip")
 
 cmp.setup({
     completion = {
@@ -7,12 +8,12 @@ cmp.setup({
     },
     snippet = {
         expand = function(args)
-            require("luasnip").lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
     mapping = {
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-Up>"] = cmp.mapping.select_prev_item(),
+        ["<C-Down>"] = cmp.mapping.select_next_item(),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
@@ -53,17 +54,24 @@ cmp.setup({
                 nvim_lua = "[Lua]",
                 -- latex_symbols = "[Latex]",
             })[entry.source.name]
+            if entry.source.name == "copilot" then
+                vim_item.kind = "[] Copilot"
+                vim_item.kind_hl_group = "CmpItemKindCopilot"
+                return vim_item
+            end
             return vim_item
         end,
     },
 
     sources = {
         { name = "nvim_lsp" },
+        { name = 'nvim_lua' },
         { name = "luasnip" },
         { name = "path" },
         { name = "buffer" },
         { name = "calc" },
         { name = "nvim_lua" },
+        { name = "copilot", group_index = 2 },
     },
 })
 
@@ -76,12 +84,12 @@ cmp.setup.filetype('gitcommit', {
     })
 })
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
+
     sources = {
-        { name = 'buffer' }
-    }
+        { name = "buffer" },
+    },
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).

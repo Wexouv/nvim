@@ -103,6 +103,11 @@ require 'packer'.startup({ function(use)
         "NTBBloodbath/rest.nvim",
         config = kfg 'rest'
     }
+
+    -- Sql
+    use {
+        'nanotee/sqls.nvim',
+    }
 end,
 config = {
         git = { clone_timeout = nil }

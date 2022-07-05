@@ -30,13 +30,17 @@ require 'packer'.startup({ function(use)
         {
             'ray-x/lsp_signature.nvim',
             config = kfg 'signature',
-            after = "nvim-treesitter"
+            after = "lspkind.nvim"
         }
     }
 
     -- Auto completion and code analiz
     use {
-        { 'hrsh7th/nvim-cmp', config = kfg 'cmp', after = "nvim-lspconfig" },
+        -- Candy
+        { 'onsails/lspkind.nvim',  after = 'nvim-lspconfig' },
+
+        -- Completion and sources
+        { 'hrsh7th/nvim-cmp', config = kfg 'cmp', after = "lspkind.nvim" },
         { 'hrsh7th/cmp-nvim-lsp', after = "nvim-cmp" },
         { 'hrsh7th/cmp-buffer', after = "nvim-cmp" },
         { 'hrsh7th/cmp-path', after = "nvim-cmp" },

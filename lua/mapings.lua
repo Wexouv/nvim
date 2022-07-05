@@ -13,6 +13,8 @@ Map ("<C-A>",      Cmd "NvimTreeToggle")
 
 -- Lsp
 Map ("<A-Enter>",  Cmd "Lspsaga code_action")
+-- First select the region, unselect and run range_code_action
+Map ("<A-Enter>",  string.format("%s %s","<ESC>" ,Cmd "Lspsaga range_code_action"), "v")
 Map ("<leader>ld", Cmd "lua vim.lsp.buf.implementation()")
 Map ("<leader>lD", Cmd "lua vim.lsp.buf.definition()")
 Map ("<leader>lf", Cmd "Lspsaga lsp_finder")

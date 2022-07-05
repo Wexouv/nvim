@@ -61,7 +61,8 @@ require 'packer'.startup({ function(use)
     {
         { 
             'mfussenegger/nvim-dap', 
-            config = kfg 'dap'
+            config = kfg 'dap',
+            keys = "<leader>gg"
         },
         {
             "rcarriga/nvim-dap-ui",

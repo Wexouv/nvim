@@ -23,9 +23,7 @@ autocmd('TextYankPost', {
 -- Show diagnostics when hold curson on.
 autocmd('CursorHold', {
     desc = 'Show current line diagnostics',
-    callback = function()
-        vim.diagnostic.open_float(nil, { scope = 'cursor', focusable = false, border = 'single' })
-    end,
+    command = "Lspsaga show_line_diagnostics",
     group = group,
 })
 

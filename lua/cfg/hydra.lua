@@ -12,8 +12,8 @@ Hydra({
 	heads = {
 		-- equalize window sizes
 		{ "e", "<C-w>=" },
-        { "s", "<C-w>s" },
-        { "v", "<C-w>v" },
+        { "s", Cmd "new" },
+        { "v", Cmd "vnew" },
 
         -- Moving around
         { '<up>', '<C-W>k' },

@@ -118,6 +118,12 @@ require 'packer'.startup({ function(use)
         "zbirenbaum/copilot-cmp",
         module = "copilot_cmp",
     }
+
+    use {
+        'kdheepak/lazygit.nvim',
+        cmd = "LazyGit"
+    }
+
     use {
         "zbirenbaum/copilot.lua",
         event = {"VimEnter"},

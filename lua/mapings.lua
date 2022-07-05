@@ -3,9 +3,11 @@ local Cmd = require 'globals'.Cmd
 
 Map ("<leader>y", '"+y')
 Map ("<leader>q",  Cmd "q")
-Map ("<C-S>",      Cmd "wall")
+Map ("<leader>w",  Cmd "wall")
 
 Map ("<C-A>",      Cmd "NvimTreeToggle")
+
+Map ("<leader>g", Cmd "terminal lazygit")
 
 -- Lsp
 Map ("<A-Enter>",  Cmd "Lspsaga code_action")

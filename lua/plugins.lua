@@ -104,6 +104,18 @@ require 'packer'.startup({ function(use)
         config = kfg 'rest'
     }
 
+    use {
+        "lukas-reineke/indent-blankline.nvim",
+        after = "gruvbox",
+        config = function()
+            require("indent_blankline").setup {
+                show_current_context = true,
+                show_current_context_start = false,
+                indent_blankline_show_first_indent_level = false
+            }
+        end
+    }
+
     -- Sql
     use {
         'nanotee/sqls.nvim',

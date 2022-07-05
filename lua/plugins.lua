@@ -30,7 +30,7 @@ require 'packer'.startup({ function(use)
         {
             'ray-x/lsp_signature.nvim',
             config = kfg 'signature',
-            after = "lspkind.nvim"
+            after = "nvim-lspconfig"
         }
     }
 

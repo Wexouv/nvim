@@ -1,5 +1,4 @@
-Cmd = function(x) return string.format("<CMD>%s<CR>", x) end
-
+local Cmd = require 'globals'.Cmd
 local Hydra = require("hydra")
 
 Hydra({

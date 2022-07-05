@@ -1,10 +1,6 @@
-Map = function(l, r, m)
-    m = m or "n" -- Default to normal mode
-    vim.keymap.set(m, l, r)
-end
-Cmd = function(x) return string.format("<CMD>%s<CR>", x) end
+local Map = require 'globals'.Map
+local Cmd = require 'globals'.Cmd
 
------------------------------------------------
 Map ("<leader>y", '"+y')
 Map ("<leader>q",  Cmd "q")
 Map ("<C-S>",      Cmd "wall")

@@ -26,6 +26,7 @@ Hydra({
         { '<s-left>', '<C-w>3<' },
         { '<s-right>', '<C-w>3>' },
 
+        { 'f', Cmd 'Telescope find_files' },
 
 		-- close active window
 		{ "q", ":q<cr>" },
@@ -66,7 +67,7 @@ Hydra({
     name = 'Debugger',
     mode = 'n',
     hint = "Debugger",
-    body = '<leader>gg',
+    body = '<F5>',
     config = {
         color = 'pink',
     },

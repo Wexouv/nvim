@@ -7,7 +7,7 @@ Map ("<leader>w",  Cmd "wall")
 
 Map ("<C-A>",      Cmd "NvimTreeToggle")
 
-Map ("<leader>g", Cmd "terminal lazygit")
+Map ("<leader>g", Cmd "LazyGit")
 
 -- Lsp
 Map ("<A-Enter>",  Cmd "Lspsaga code_action")

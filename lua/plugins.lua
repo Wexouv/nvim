@@ -33,7 +33,31 @@ require 'packer'.startup({ function(use)
         { 'hrsh7th/cmp-cmdline' },
         { 'L3MON4D3/LuaSnip' },
         { 'saadparwaiz1/cmp_luasnip' },
-        { 'hrsh7th/cmp-nvim-lua' }
+        { 'hrsh7th/cmp-nvim-lua' },
+        { 'andersevenrud/cmp-tmux' },
+
+        -- Copilot
+        {
+            "zbirenbaum/copilot-cmp",
+            module = "copilot_cmp"
+        },
+        {
+            "zbirenbaum/copilot.lua",
+            event = {"VimEnter"},
+            config = function()
+                vim.defer_fn(function()
+                    require("copilot").setup( {
+                        cmp = {
+                            enabled = true,
+                            method = "getPanelCompletions",
+                        },
+                        panel = {
+                            enabled = true,
+                        },
+                    })
+                end, 100)
+            end,
+        }
     }
 
     -- Tree-sitter
@@ -113,33 +137,9 @@ require 'packer'.startup({ function(use)
         'nanotee/sqls.nvim',
     }
 
-    -- Coplilot
-    use {
-        "zbirenbaum/copilot-cmp",
-        module = "copilot_cmp",
-    }
-
     use {
         'kdheepak/lazygit.nvim',
         cmd = "LazyGit"
-    }
-
-    use {
-        "zbirenbaum/copilot.lua",
-        event = {"VimEnter"},
-        config = function()
-            vim.defer_fn(function()
-                require("copilot").setup( {
-                cmp = {
-                    enabled = true,
-                    method = "getPanelCompletions",
-                },
-                panel = { -- no config options yet
-                    enabled = true,
-                },
-            })
-            end, 100)
-    end,
     }
 end,
 config = {

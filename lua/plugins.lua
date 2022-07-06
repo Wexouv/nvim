@@ -1,5 +1,6 @@
 local kfg = function(name) return string.format('require("cfg/%s")', name) end
 
+
 require 'packer'.startup({ function(use)
     -- Global dependencies
     use {
@@ -7,6 +8,15 @@ require 'packer'.startup({ function(use)
         'nvim-lua/plenary.nvim',    'kyazdani42/nvim-web-devicons'
     }
 
+    use {
+        "zbirenbaum/copilot.lua",
+        event = {"VimEnter"},
+        config = function()
+            vim.defer_fn(function()
+                require("copilot").setup()
+            end, 100)
+        end,
+    }
     -- Lsp
     use {{
         'neovim/nvim-lspconfig',
@@ -35,28 +45,9 @@ require 'packer'.startup({ function(use)
         { 'saadparwaiz1/cmp_luasnip' },
         { 'hrsh7th/cmp-nvim-lua' },
         { 'andersevenrud/cmp-tmux' },
-
-        -- Copilot
         {
             "zbirenbaum/copilot-cmp",
-            module = "copilot_cmp"
-        },
-        {
-            "zbirenbaum/copilot.lua",
-            event = {"VimEnter"},
-            config = function()
-                vim.defer_fn(function()
-                    require("copilot").setup( {
-                        cmp = {
-                            enabled = true,
-                            method = "getPanelCompletions",
-                        },
-                        panel = {
-                            enabled = true,
-                        },
-                    })
-                end, 100)
-            end,
+            module = "copilot_cmp",
         }
     }
 

@@ -17,11 +17,11 @@ opt.updatetime = 250
 
 -- Searching
 opt.ignorecase = true
-opt.smartcase = true
+opt.smartcase  = true
 
 -- Tab or space ?
 local tab = 4
-opt.tabstop = tab
-opt.shiftwidth = tab
+opt.tabstop     = tab
+opt.shiftwidth  = tab
 opt.softtabstop = tab
-opt.expandtab = true
+opt.expandtab   = true

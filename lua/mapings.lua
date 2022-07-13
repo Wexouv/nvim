@@ -5,8 +5,6 @@ Map ("<leader>y", '"+y')
 Map ("<leader>q",  Cmd "q")
 Map ("<leader>w",  Cmd "wall")
 
-Map ("<C-A>",      Cmd "NvimTreeToggle")
-
 Map ("<leader>g", Cmd "LazyGit")
 
 -- Lsp
@@ -36,3 +34,7 @@ Map("<leader>o", Cmd "tabnext")
 
 -- Packer
 Map("<leader>ps", Cmd "PackerSync")
+
+-- Tree
+Map("/", Cmd "Neotree toggle right")
+Map("<leader>/", Cmd "Neotree toggle show buffers right")

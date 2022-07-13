@@ -8,6 +8,19 @@ require 'packer'.startup({ function(use)
         'nvim-lua/plenary.nvim',    'kyazdani42/nvim-web-devicons'
     }
 
+    -- Lua
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
+
     use {
         "zbirenbaum/copilot.lua",
         event = {"VimEnter"},
@@ -101,39 +114,40 @@ require 'packer'.startup({ function(use)
 
     -- File tree
     use {
-        'kyazdani42/nvim-tree.lua',
-        tag = 'nightly',
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
         config = kfg 'tree',
+        requires = "MunifTanjim/nui.nvim"
     }
 
-    -- Rest
-    use {
-        "NTBBloodbath/rest.nvim",
-        config = kfg 'rest'
-    }
+-- Rest
+use {
+    "NTBBloodbath/rest.nvim",
+    config = kfg 'rest'
+}
 
-    use {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require("indent_blankline").setup {
-                show_current_context = true,
-                show_current_context_start = false,
-                indent_blankline_show_first_indent_level = false
-            }
-        end
-    }
+use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+        require("indent_blankline").setup {
+            show_current_context = true,
+            show_current_context_start = false,
+            indent_blankline_show_first_indent_level = false
+        }
+    end
+}
 
-    -- Sql
-    use {
-        'nanotee/sqls.nvim',
-    }
+-- Sql
+use {
+    'nanotee/sqls.nvim',
+}
 
-    use {
-        'kdheepak/lazygit.nvim',
-        cmd = "LazyGit"
-    }
+use {
+    'kdheepak/lazygit.nvim',
+    cmd = "LazyGit"
+}
 end,
 config = {
-        git = { clone_timeout = nil }
-    }
+    git = { clone_timeout = nil }
+}
 })

@@ -104,3 +104,18 @@ ls.add_snippets("cs", {
             )
         ),
 })
+
+ls.add_snippets("cs", {
+        s('mediator',
+            fmt(
+                [[
+                var command = new {}Command({});
+                var handler = new {}CommandHandler({});
+
+                var result = await handler.Handle(command, CancelationToken.None);
+                {}
+                ]],
+            { i(1, "Name"), i(2), rep(1), i(3), i(0) }
+            )
+        ),
+})

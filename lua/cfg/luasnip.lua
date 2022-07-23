@@ -15,9 +15,53 @@ local m = require("luasnip.extras").m
 local lambda = require("luasnip.extras").l
 local postfix = require("luasnip.extras.postfix").postfix
 
+local types = require "luasnip.util.types"
+
+local s = ls.s
+local i = ls.insert_node
+local c = ls.choice_node
+local t = ls.text_node
+local f = ls.function_node
+
+local fmt = require 'luasnip.extras.fmt'.fmt
+local rep = require 'luasnip.extras'.rep
+
 ls.snippets = {
-    all = {
-        s("arst",
+
+    cs = {
+        s('prop',
+        fmt("public {} {} {{ get; set; }}\n{}", { i(1, "string"), i(2, "Name"), i(0) })),
+
+        s('class',
+        fmt(
+        [[
+        public class {}
+        {{
+            {}
+        }}
+        ]], { i(1, "name"), i(0) } )),
+
+    }
+}
+
+ls.add_snippets("cs", {
+        s('api',
+            fmt(
+                [[
+                    [Http{}("{}")]
+                    public async Task<IActionResult> {}Async()
+                    {{
+                        {}
+                        return Ok();
+                    }}
+                ]],
+            { i(1, "Get"), i(2, "Test"), rep(2), i(0) }
+            )
+        ),
+})
+
+ls.add_snippets("cs", {
+        s('test',
             fmt(
                 [[
                     [Fact]
@@ -30,11 +74,33 @@ ls.snippets = {
                         // Assert
                     }}
                 ]],
-                {
-                    i(1, "TestName"),
-                    i(2, "")
-                }
+            { i(1, "TestName"), i(2, "") }
             )
-        )
-    }
-}
+        ),
+})
+
+ls.add_snippets("cs", {
+        s('class',
+            fmt(
+                [[
+                public class {}
+                {{
+                    {}
+                }}
+                ]],
+            { i(1, "Name"), i(2, "") }
+            )
+        ),
+})
+
+ls.add_snippets("cs", {
+        s('prop',
+            fmt(
+                [[
+                public {} {} {{ get; set; }}
+                {}
+                ]],
+            { i(1, "string"), i(2, "Name"), i(0) }
+            )
+        ),
+})

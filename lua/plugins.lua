@@ -31,7 +31,7 @@ require 'packer'.startup({ function(use)
         'L3MON4D3/LuaSnip',
         config = kfg 'luasnip'
     }
-    -- Lsp
+    -- LTestsp
     use {{
         'neovim/nvim-lspconfig',
         config = kfg 'lsp',

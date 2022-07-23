@@ -119,3 +119,26 @@ ls.add_snippets("cs", {
             )
         ),
 })
+
+ls.add_snippets("cs", {
+        s('handler',
+            fmt(
+                [[
+                public record {}Command({}) : IRequest<{}>;
+
+                public class {}CommandHandler : IRequestHandler<{}Command, {}>
+                {{
+                    public {}CommandHandler({})
+                    {{
+                    }}
+
+                    public async Task<{}> Handle({}Command request, CancellationToken cancelationToken)
+                    {{
+                        {}
+                    }}
+                }}
+                ]],
+            { i(1, "Name"), i(2), i(3), rep(1), rep(1), rep(3), rep(1), i(4), rep(3), rep(1), i(0) }
+            )
+        ),
+})

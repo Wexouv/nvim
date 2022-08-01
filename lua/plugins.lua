@@ -9,6 +9,23 @@ require 'packer'.startup({ function(use)
 
     use { "beauwilliams/focus.nvim", config = function() require("focus").setup() end }
 
+    use {
+        'folke/twilight.nvim',
+        config = function() require("twilight").setup { } end
+    }
+
+    use {
+        "Pocco81/true-zen.nvim",
+        config = function()
+            require("true-zen").setup {
+                integrations = {
+                    tmux = true,
+                    twilight = true
+                }
+            }
+        end
+    }
+
     -- Lua
     use {
         "folke/trouble.nvim",
@@ -67,6 +84,29 @@ require 'packer'.startup({ function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         config = kfg 'treesitter',
+    }
+
+    use {
+        'nvim-treesitter/playground',
+        config = function()
+            require "nvim-treesitter.configs".setup {
+                playground = {
+                    enable = true,
+                    keybindings = {
+                        toggle_query_editor = 'o',
+                        toggle_hl_groups = 'i',
+                        toggle_injected_languages = 't',
+                        toggle_anonymous_nodes = 'a',
+                        toggle_language_display = 'I',
+                        focus_language = 'f',
+                        unfocus_language = 'F',
+                        update = 'R',
+                        goto_node = '<cr>',
+                        show_help = '?',
+                    },
+                }
+            }
+        end
     }
 
     use {

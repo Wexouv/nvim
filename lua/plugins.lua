@@ -182,6 +182,13 @@ require 'packer'.startup({ function(use)
         requires = "MunifTanjim/nui.nvim"
     }
 
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+
     -- Rest
     use {
         "NTBBloodbath/rest.nvim",

@@ -160,3 +160,17 @@ ls.add_snippets("cs", {
             )
         ),
 })
+
+ls.add_snippets("cs", {
+        s('controller',
+            fmt(
+                [[
+                public class {}Controller : ApiControllerBase
+                {{
+                    {}
+                }}
+                ]],
+                { i(1, "Name"), i(0) }
+                )
+        ),
+})

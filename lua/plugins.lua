@@ -124,9 +124,9 @@ require 'packer'.startup({ function(use)
     }
 
     -- Debugger
-    use 
-    {{ 
-        'mfussenegger/nvim-dap', 
+    use
+    {{
+        'mfussenegger/nvim-dap',
         config = kfg 'dap',
     },{
         "rcarriga/nvim-dap-ui",
@@ -135,7 +135,7 @@ require 'packer'.startup({ function(use)
 
     use 'Yazeed1s/minimal.nvim'
 
-    use { 
+    use {
         "ellisonleao/gruvbox.nvim",
         config = function()
             require("gruvbox").setup({

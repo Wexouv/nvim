@@ -162,15 +162,26 @@ ls.add_snippets("cs", {
 })
 
 ls.add_snippets("cs", {
-        s('controller',
+        s('interface',
             fmt(
                 [[
-                public class {}Controller : ApiControllerBase
+                public interface I{}
                 {{
                     {}
                 }}
                 ]],
                 { i(1, "Name"), i(0) }
+                )
+        ),
+})
+
+ls.add_snippets("cs", {
+        s('di',
+            fmt(
+                [[
+                services.AddTransient<I{}, {}>();
+                ]],
+                { i(1, "Service"), rep(1) }
                 )
         ),
 })
